@@ -5,8 +5,11 @@ const url = 'https://en.wikipedia.org/wiki/List_of_Presidents_of_the_United_Stat
 rp(url)
   .then((html) => {
     //success!
-    console.log($('tbody > tr > td > b > a', html).length);
-    console.log($('tbody > tr > td > b > a', html));
+    const urls = [];
+    for (let i = 0; i < 45; i++) {
+        urls.push($('tbody > tr > td > b > a', html)[i].attribs.href);
+    }
+    console.log(urls);
   })
   .catch(function(err){
     //handle error
